@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Showcase</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        .media-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .media-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .media-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures image is fully visible inside container */
+        }
+
+        .media-item video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* For smaller screens */
+        @media (max-width: 768px) {
+            .media-item {
+                border-radius: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-center my-4">Media Showcase</h1>
+        <div class="media-container" id="mediaContainer">
+            <!-- Media items will be loaded here dynamically -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js CDN links -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Loop through image numbers from 1 to 64 and add images dynamically
+        const mediaContainer = document.getElementById('mediaContainer');
+        
+        for (let i = 1; i <= 64; i++) {
+            // Create a new div element for each image
+            const mediaItem = document.createElement('div');
+            mediaItem.classList.add('media-item');
+
+            // Create an img element
+            const img = document.createElement('img');
+            img.src = `msdev/${i}.jpg`;  // Assuming images are in an 'images' folder with filenames 1.jpg, 2.jpg, ..., 64.jpg
+            img.alt = `Image ${i}`;
+
+            // Append img to media-item
+            mediaItem.appendChild(img);
+
+            // Append media-item to media-container
+            mediaContainer.appendChild(mediaItem);
+        }
+
+        // Adding example videos (You can replace these video links with actual ones)
+       
+    </script>
+</body>
+</html>
